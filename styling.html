@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><body><h1>Test</h1>
+<div id="googleMap" style="width:100%;height:400px;"></div> <script>
+function myMap() {
+var mapProp= {  center:new google.maps.LatLng(26.2006, 92.9376 ),
+    styles: [ { "featureType": "administrative", "stylers": [ {"visibility": "off" } ] },
+{ "featureType": "poi","stylers": [ {"visibility": "off"}]},
+{"featureType": "road", "stylers": [{"visibility": "off"}] },
+  {"featureType": "transit", "stylers": [{ "visibility": "off"}]},{
+  "featureType": "water", "stylers": [{"visibility": "off"}]}
+]zoom:5, };
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=API_KEY"></script></body></html>

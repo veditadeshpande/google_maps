@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html><body><h1>My First Google Map</h1>
+<p id="demo" > </p><div id="googleMap" style="width:100%;height:400px;"></div><script>
+function myMap() {
+var mapProp= {
+    center:new google.maps.LatLng(51.508742,-0.120850),
+    zoom:5,
+};
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var theMatrix =[[0,0,0,0,0] ,[0,0,0,0,0] ,[0,0,0,0,0] ,[0,0,0,0,0] ,[0,0,0,0,0]   ] ;
+var directionsService = new google.maps.DirectionsService();
+var directionsDisplay = new google.maps.DirectionsRenderer();
+directionsDisplay.setMap(map);
+var lats = [26.9124 ,26.2389, 26.9157,26.4897,24.5854,] ;
+var longs = [75.7873, 73.0243, 70.9083, 74.5511, 73.7125] ;var request ; var sum = 1 ;
+for(var i = 0 ; i< 5; i++ ) { for(var j = 0  ; j< 5 ; j++){
+        getDistance(lats[i],longs[i] , lats[j] , longs[j]);}}
+function getDistance(a1,a2,b1,b2){
+request = {   origin      :  new google.maps.LatLng(a1,a2) ,
+            destination : new google.maps.LatLng( b1, b2),
+            travelMode  : google.maps.DirectionsTravelMode.DRIVING
+          }directionsService.route(request, function(response, status) {
+          if ( status == google.maps.DirectionsStatus.OK ) {
+            // distance in kilometers 
+             theMatrix[i][j]  = response.routes[0].legs[0].distance.value/1000 ;
+
+     }
+   else {  alert("cannot compute") ;} }); }}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=API &callback=myMap"></script>
+</body></html>
